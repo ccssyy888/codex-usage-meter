@@ -1,6 +1,6 @@
 # Security
 
-Please report security issues privately instead of opening a public issue. Until a repository contact address is added, use GitHub's private vulnerability reporting feature after the repository is published.
+Please report security issues through [GitHub private vulnerability reporting](https://github.com/ccssyy888/codex-usage-meter/security/advisories/new) instead of opening a public issue.
 
 When reporting an issue, include the app version, macOS version, Codex CLI version, and reproduction steps. Do not include tokens, `auth.json`, or other credentials.
 

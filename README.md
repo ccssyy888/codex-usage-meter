@@ -21,7 +21,7 @@ Codex Usage Meter talks only to your local `codex app-server --stdio` process. I
 
 - macOS 14 or later
 - Apple Silicon or Intel Mac
-- Codex CLI installed and signed in
+- Codex CLI installed and signed in (tested with `codex-cli 0.144.4`)
 
 ## Install
 
@@ -29,12 +29,16 @@ Download the latest ZIP from GitHub Releases, unzip it, and move **Codex Usage M
 
 To build from source:
 
+- Xcode 16 or a Swift 6.0+ toolchain
+
 ```bash
 swift run --disable-sandbox CodexMeterCoreTests
 ./scripts/build_app.sh
 ```
 
 The app is created at `outputs/Codex Usage Meter.app`. If Codex is not found automatically, open the meter menu and choose the `codex` executable manually.
+
+Codex Usage Meter uses the local Codex app-server protocol. New Codex CLI releases may require compatibility updates, so please include your CLI version when reporting a problem.
 
 ## Privacy
 

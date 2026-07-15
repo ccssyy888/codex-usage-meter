@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible problem with Codex Usage Meter
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Codex Usage Meter. For security issues, use [private vulnerability reporting](https://github.com/ccssyy888/codex-usage-meter/security/advisories/new) instead.
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: macos-version
+    attributes:
+      label: macOS version
+      placeholder: "14.7"
+    validations:
+      required: true
+  - type: input
+    id: codex-version
+    attributes:
+      label: Codex CLI version
+      description: Run `codex --version` to find it.
+      placeholder: "codex-cli 0.144.4"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Explain the problem and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the menu bar panel
+        2. Click …
+        3. See …
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Additional context
+      description: Add screenshots or non-sensitive diagnostics. Never include tokens, auth.json, or other credentials.

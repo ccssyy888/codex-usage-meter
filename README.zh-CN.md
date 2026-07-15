@@ -21,7 +21,7 @@
 
 - macOS 14 或更高版本
 - Apple Silicon 或 Intel Mac
-- 已安装并登录 Codex CLI
+- 已安装并登录 Codex CLI（已使用 `codex-cli 0.144.4` 验证）
 
 ## 安装
 
@@ -29,12 +29,16 @@
 
 从源码构建：
 
+- Xcode 16 或 Swift 6.0+ 工具链
+
 ```bash
 swift run --disable-sandbox CodexMeterCoreTests
 ./scripts/build_app.sh
 ```
 
 应用会生成在 `outputs/Codex Usage Meter.app`。如果没有自动找到 Codex，可打开菜单栏面板，手动选择 `codex` 可执行文件。
+
+Codex Usage Meter 使用本机 Codex app-server 协议。新版 Codex CLI 可能需要同步适配，因此反馈问题时请附上 CLI 版本。
 
 ## 隐私
 
