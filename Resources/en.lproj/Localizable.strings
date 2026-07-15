@@ -1,0 +1,53 @@
+"status.connecting" = "Connecting";
+"status.connected" = "Connected";
+"status.stale" = "Data may be outdated";
+"status.codex_not_found" = "Codex not found";
+"status.not_logged_in" = "Codex is not signed in";
+"status.incompatible" = "Incompatible CLI version";
+"status.error" = "Connection failed";
+"status.choose_codex_hint" = "Choose codex from the menu";
+"status.login_hint" = "Run codex login first";
+
+"quota.five_hour" = "5 hours";
+"quota.weekly" = "Weekly";
+"quota.remaining" = "Remaining";
+"quota.remaining_percent" = "%d%% remaining";
+"quota.data_unknown" = "Data unavailable";
+"quota.reset_unknown" = "Reset time unavailable";
+"quota.waiting_for_reset" = "Waiting for reset";
+"quota.countdown_days" = "Resets in %dd %dh";
+"quota.countdown_time" = "Resets in %d:%02d:%02d";
+"quota.date_format" = "MMM d, HH:mm";
+
+"credits.title" = "Reset credits";
+"credits.count" = "%d available";
+"credits.item" = "Credit %d";
+"credits.expiry_unknown" = "Expiry unavailable";
+"credits.expires" = "Expires %@";
+
+"update.never" = "Not updated yet";
+"update.just_now" = "Updated just now";
+"update.seconds_ago" = "Updated %ds ago";
+"update.minutes_ago" = "Updated %dm ago";
+
+"action.refresh" = "Refresh now";
+"action.choose_codex" = "Choose Codex…";
+"action.quit" = "Quit Codex Usage Meter";
+
+"picker.title" = "Choose the Codex executable";
+"picker.message" = "Choose the codex command. A common location is ~/.local/bin/codex.";
+"picker.choose" = "Choose";
+"picker.not_executable" = "The selected file is not executable.";
+
+"menubar.tooltip" = "Codex Usage Meter: five-hour quota %@ · %@";
+
+"error.not_running" = "Codex app-server is not running.";
+"error.not_initialized" = "Codex app-server is not initialized yet.";
+"error.invalid_message" = "Codex app-server returned unrecognized data.";
+"error.initialization_timeout" = "Timed out while connecting to Codex.";
+"error.refresh_timeout" = "Timed out while refreshing quota.";
+"error.initialization_failed" = "Codex app-server initialization failed: %@";
+"error.transport" = "Codex app-server communication failed: %@";
+"error.process_terminated" = "Codex app-server exited.";
+"error.request_failed" = "Codex app-server request failed.";
+"error.missing_main_limit" = "Codex did not return the main quota bucket.";

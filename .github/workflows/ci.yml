@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Core validations
+        run: swift run --disable-sandbox CodexMeterCoreTests
+      - name: Release build
+        run: swift build -c release --disable-sandbox -Xswiftc -warnings-as-errors

@@ -1,0 +1,53 @@
+"status.connecting" = "正在连接";
+"status.connected" = "已连接";
+"status.stale" = "数据可能已过期";
+"status.codex_not_found" = "未找到 Codex";
+"status.not_logged_in" = "Codex 尚未登录";
+"status.incompatible" = "CLI 版本不兼容";
+"status.error" = "连接失败";
+"status.choose_codex_hint" = "请从菜单选择 codex";
+"status.login_hint" = "请先运行 codex login";
+
+"quota.five_hour" = "5 小时";
+"quota.weekly" = "本周";
+"quota.remaining" = "剩余";
+"quota.remaining_percent" = "剩余 %d%%";
+"quota.data_unknown" = "数据未知";
+"quota.reset_unknown" = "刷新时间未知";
+"quota.waiting_for_reset" = "等待刷新";
+"quota.countdown_days" = "%d天 %d小时后刷新";
+"quota.countdown_time" = "%d:%02d:%02d 后刷新";
+"quota.date_format" = "M月d日 HH:mm";
+
+"credits.title" = "重置券";
+"credits.count" = "%d 张";
+"credits.item" = "第 %d 张";
+"credits.expiry_unknown" = "到期时间未知";
+"credits.expires" = "%@ 到期";
+
+"update.never" = "尚未更新";
+"update.just_now" = "刚刚更新";
+"update.seconds_ago" = "%d 秒前更新";
+"update.minutes_ago" = "%d 分钟前更新";
+
+"action.refresh" = "立即刷新";
+"action.choose_codex" = "选择 Codex…";
+"action.quit" = "退出 Codex Usage Meter";
+
+"picker.title" = "选择 Codex 可执行文件";
+"picker.message" = "请选择 codex 命令文件。常见位置是 ~/.local/bin/codex。";
+"picker.choose" = "选择";
+"picker.not_executable" = "所选文件不可执行。";
+
+"menubar.tooltip" = "Codex Usage Meter：五小时额度%@ · %@";
+
+"error.not_running" = "Codex app-server 未运行。";
+"error.not_initialized" = "Codex app-server 尚未初始化。";
+"error.invalid_message" = "Codex app-server 返回了无法识别的数据。";
+"error.initialization_timeout" = "连接 Codex 超时。";
+"error.refresh_timeout" = "刷新额度超时。";
+"error.initialization_failed" = "Codex app-server 初始化失败：%@";
+"error.transport" = "Codex app-server 通信失败：%@";
+"error.process_terminated" = "Codex app-server 已退出。";
+"error.request_failed" = "Codex app-server 请求失败。";
+"error.missing_main_limit" = "Codex 返回的数据中没有主额度信息。";

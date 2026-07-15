@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Xcode
+DerivedData/
+*.xcuserstate
+
+# Local build and release artifacts
+outputs/
+dist/
+
+# Local signing and notarization credentials
+.env
+.env.*
+*.cer
+*.csr
+*.p12
+*.p8
+*.key
+
+# Editors
+.idea/
+.vscode/
