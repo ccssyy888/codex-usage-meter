@@ -95,7 +95,7 @@ public struct ResetCreditsSnapshot: Codable, Equatable, Sendable {
     public let credits: [ResetCredit]?
 
     public init(availableCount: Int, credits: [ResetCredit]?) {
-        self.availableCount = availableCount
+        self.availableCount = max(0, availableCount)
         self.credits = credits
     }
 

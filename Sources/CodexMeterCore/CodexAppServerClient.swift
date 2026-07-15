@@ -85,7 +85,10 @@ public enum DiagnosticSummary {
         let replacements: [(String, String)] = [
             (#"(?i)\bBearer\s+[A-Za-z0-9._~+/=-]+"#, "Bearer <redacted>"),
             (#"(?i)\bsk-[A-Za-z0-9_-]{8,}\b"#, "<redacted>"),
-            (#"(?i)\b(authorization|api[_-]?key|access[_-]?token|refresh[_-]?token|token|password)\s*[:=]\s*[^\s,;]+"#, "$1=<redacted>"),
+            (
+                #"(?i)(["']?(?:authorization|api[_-]?key|access[_-]?token|refresh[_-]?token|token|password)["']?\s*[:=]\s*)(?:"[^"]*"|'[^']*'|[^\s,;}]+)"#,
+                "$1<redacted>"
+            ),
             (#"(?i)([?&](?:token|key|secret|password)=)[^&\s]+"#, "$1<redacted>"),
         ]
         for (pattern, replacement) in replacements {

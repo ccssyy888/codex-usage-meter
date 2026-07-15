@@ -4,6 +4,8 @@
 
 [English](README.md)
 
+**[下载 v0.1.1 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.1) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip.sha256)
+
 ![Codex Usage Meter 显示额度和每张重置券到期时间](docs/images/overview-zh-cn.png)
 
 不用打开网页，抬眼就能看到真正需要的信息：
@@ -25,7 +27,17 @@
 
 ## 安装
 
-从 GitHub Releases 下载最新 ZIP，解压后将 **Codex Usage Meter.app** 拖入“应用程序”。在正式公证版本提供前，从网络下载的应用可能会触发 macOS Gatekeeper 提示。
+1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)。
+2. 解压后将 **Codex Usage Meter.app** 拖入“应用程序”。
+3. 从“应用程序”打开软件。
+
+当前安装包未经过 Apple 公证。如果 macOS 首次打开时阻止运行，请先尝试打开一次，再进入 **系统设置 → 隐私与安全性 → 安全性**，选择 **仍要打开**。只有在确认安装包来自本仓库并且你信任它时才应绕过提示。具体步骤见 [Apple 官方说明](https://support.apple.com/zh-cn/guide/mac-help/mh40616/mac)。
+
+可选：将 ZIP 和校验文件下载到同一目录后验证完整性：
+
+```bash
+shasum -a 256 -c Codex-Usage-Meter-v0.1.1-macOS.zip.sha256
+```
 
 从源码构建：
 

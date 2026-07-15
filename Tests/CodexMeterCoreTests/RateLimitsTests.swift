@@ -132,6 +132,15 @@ func runRateLimitTests() {
         )
     }
 
+    check("异常的负数重置券数量会按零处理") {
+        let data = Data(
+            #"{"rateLimits":{"limitId":"codex","primary":{"usedPercent":10}},"rateLimitResetCredits":{"availableCount":-1,"credits":[]}}"#.utf8
+        )
+        let parsed = try RateLimitsResponseParser.parseReadResult(data)
+        expect(parsed.resetCredits?.availableCount == 0, "负数总数应被钳制为零")
+        expect(parsed.resetCredits?.creditsForDisplay.isEmpty == true, "负数总数不应创建占位行")
+    }
+
     check("只把 codex 桶识别为主额度") {
         let codex = RateLimitSnapshot(
             limitID: "codex",

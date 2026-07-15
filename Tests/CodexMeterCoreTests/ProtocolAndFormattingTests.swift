@@ -5,7 +5,7 @@ func runProtocolAndFormattingTests() {
     check("握手和额度请求是 JSONL") {
         let initialize = try require(
             try JSONSerialization.jsonObject(
-                with: AppServerProtocol.initializeRequest(clientVersion: "0.1.0")
+                with: AppServerProtocol.initializeRequest(clientVersion: "0.1.1")
             ) as? [String: Any],
             "初始化请求不是 JSON 对象"
         )
@@ -14,7 +14,7 @@ func runProtocolAndFormattingTests() {
         let clientInfo = (initialize["params"] as? [String: Any])?["clientInfo"] as? [String: Any]
         expect(clientInfo?["name"] as? String == "codex_usage_meter", "客户端名称错误")
         expect(clientInfo?["title"] as? String == "Codex Usage Meter", "客户端标题错误")
-        expect(clientInfo?["version"] as? String == "0.1.0", "客户端版本错误")
+        expect(clientInfo?["version"] as? String == "0.1.1", "客户端版本错误")
 
         let initialized = try require(
             try JSONSerialization.jsonObject(with: AppServerProtocol.initializedNotification()) as? [String: Any],
@@ -68,12 +68,14 @@ func runProtocolAndFormattingTests() {
 
     check("诊断摘要会隐藏凭证和用户目录") {
         let summary = DiagnosticSummary.redacted(
-            "token=very-secret-value Bearer abc.def sk-example123 /Users/tester/.codex/auth.json",
+            #"token=very-secret-value Bearer abc.def sk-example123 {"access_token":"json-secret","password":"two words"} /Users/tester/.codex/auth.json"#,
             homeDirectory: URL(fileURLWithPath: "/Users/tester")
         )
         expect(!summary.contains("very-secret-value"), "token 未脱敏")
         expect(!summary.contains("abc.def"), "Bearer token 未脱敏")
         expect(!summary.contains("sk-example123"), "API key 未脱敏")
+        expect(!summary.contains("json-secret"), "JSON token 未脱敏")
+        expect(!summary.contains("two words"), "带空格的 JSON 密码未脱敏")
         expect(!summary.contains("/Users/tester"), "用户目录未脱敏")
         expect(summary.contains("~/.codex/auth.json"), "用户目录应替换为波浪号")
     }
