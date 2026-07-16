@@ -1,31 +1,33 @@
 # Codex Usage Meter
 
-**A tiny, native macOS menu bar meter for Codex usage limits and reset credits.**
+**A quiet, native macOS companion that keeps your Codex limits close—without pulling you out of your work.**
 
 [简体中文](README.zh-CN.md)
 
 **[Download v0.1.1 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.1) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip.sha256)
 
-![Codex Usage Meter showing quota and reset credit expiries](docs/images/overview-en.png)
+<p align="center">
+  <img src="docs/images/overview-en.jpg" width="560" alt="Codex Usage Meter showing quota and reset credit expiries">
+</p>
 
-See what matters without opening another dashboard:
+When you are deep in a session, the last thing you want is another dashboard. Codex Usage Meter lives quietly in your menu bar and gives you the answer at a glance:
 
-- 5-hour quota directly in the menu bar
-- Weekly quota and exact reset times
-- Every reset credit listed with its own expiry date
-- Automatic refresh and reconnection
-- English and Simplified Chinese
-- No analytics, ads, account file parsing, or log scraping
+- Glance at your 5-hour quota without leaving the app you are working in
+- Keep an eye on weekly usage and exact reset times
+- See every reset credit together with its own expiry date
+- Stay up to date through automatic refresh and reconnection
+- Feel at home in English or Simplified Chinese
+- Work with confidence: no analytics, ads, account-file parsing, or log scraping
 
 Codex Usage Meter talks only to your local `codex app-server --stdio` process. It does **not** read or store `~/.codex/auth.json`.
 
-## Requirements
+## What you need
 
 - macOS 14 or later
 - Apple Silicon or Intel Mac
 - Codex CLI installed and signed in (tested with `codex-cli 0.144.4`)
 
-## Install
+## Get started
 
 1. [Download the macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip).
 2. Unzip it and move **Codex Usage Meter.app** to Applications.
@@ -52,13 +54,13 @@ The app is created at `outputs/Codex Usage Meter.app`. If Codex is not found aut
 
 Codex Usage Meter uses the local Codex app-server protocol. New Codex CLI releases may require compatibility updates, so please include your CLI version when reporting a problem.
 
-## Privacy
+## Private by design
 
-Everything stays on your Mac. See [PRIVACY.md](PRIVACY.md) for the short, plain-language policy.
+Your usage is yours. Everything stays on your Mac, and the app only remembers the Codex executable you choose. See [PRIVACY.md](PRIVACY.md) for the short, plain-language policy.
 
-## Project status
+## A small project, growing carefully
 
-This is an early, focused utility. Bug reports and small improvements are welcome. See [RELEASING.md](RELEASING.md) for the maintainer release checklist.
+This project started from a simple wish: make Codex limits easy to understand without getting in the way. It is still early and intentionally focused. If something feels off—or you have a small idea that would make it nicer to use—bug reports and thoughtful improvements are very welcome. See [RELEASING.md](RELEASING.md) for the maintainer release checklist.
 
 ## License
 

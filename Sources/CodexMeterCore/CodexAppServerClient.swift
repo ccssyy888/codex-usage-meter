@@ -57,9 +57,9 @@ public enum CodexAppServerError: LocalizedError {
     public var requiresConnectionRestart: Bool {
         switch self {
         case .notRunning, .initializationTimedOut, .rateLimitRequestTimedOut,
-             .initializationFailed, .transportError:
+             .initializationFailed, .transportError, .processTerminated:
             return true
-        case .notInitialized, .protocolError, .invalidMessage, .processTerminated:
+        case .notInitialized, .protocolError, .invalidMessage:
             return false
         }
     }
@@ -112,11 +112,9 @@ public enum DiagnosticSummary {
 }
 
 public final class CodexAppServerClient {
-    public var onReady: (() -> Void)?
     public var onSnapshot: ((RateLimitSnapshot, ResetCreditsSnapshot?) -> Void)?
     public var onSparseUpdate: ((RateLimitSnapshot) -> Void)?
     public var onFailure: ((Error) -> Void)?
-    public var onTermination: (() -> Void)?
 
     private var process: Process?
     private var inputPipe: Pipe?
@@ -185,7 +183,6 @@ public final class CodexAppServerClient {
                 self.cleanupProcessHandles()
                 if !self.stopping {
                     self.onFailure?(CodexAppServerError.processTerminated(errorSummary))
-                    self.onTermination?()
                 }
             }
         }
@@ -310,7 +307,6 @@ public final class CodexAppServerClient {
             initializationTimeoutWorkItem = nil
             initialized = true
             try write(AppServerProtocol.initializedNotification())
-            onReady?()
             requestRateLimits()
             return
         }

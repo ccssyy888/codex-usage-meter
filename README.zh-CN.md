@@ -1,31 +1,33 @@
 # Codex Usage Meter
 
-**一个轻量、原生、专为 Codex 设计的 macOS 菜单栏额度工具。**
+**一个安静待在 macOS 菜单栏里的 Codex 额度小助手：需要时一眼看清，不打断手头工作。**
 
 [English](README.md)
 
 **[下载 v0.1.1 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.1) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip.sha256)
 
-![Codex Usage Meter 显示额度和每张重置券到期时间](docs/images/overview-zh-cn.png)
+<p align="center">
+  <img src="docs/images/overview-zh-cn.jpg" width="560" alt="Codex Usage Meter 显示额度和每张重置券到期时间">
+</p>
 
-不用打开网页，抬眼就能看到真正需要的信息：
+写代码正投入时，最不想做的就是停下来翻找另一个页面。Codex Usage Meter 平时安静地待在菜单栏，需要时看一眼，就能知道：
 
-- 菜单栏直接显示 5 小时剩余额度
-- 查看本周额度和准确刷新时间
-- 有几张重置券就显示几张，每张分别显示到期时间
-- 自动刷新，连接中断后自动恢复
-- 支持简体中文和英文
-- 无广告、无统计，不读取账号文件，不扫描日志
+- 不离开正在使用的应用，就能看到 5 小时剩余额度
+- 随时了解本周用量和准确刷新时间
+- 每张重置券单独列出，到期时间清清楚楚
+- 自动刷新，连接中断后也会自己恢复
+- 简体中文和英文都用得顺手
+- 放心使用：无广告、无统计，不读取账号文件，也不扫描日志
 
 应用只通过本机的 `codex app-server --stdio` 获取数据，**不会读取或保存** `~/.codex/auth.json`。
 
-## 使用要求
+## 开始之前
 
 - macOS 14 或更高版本
 - Apple Silicon 或 Intel Mac
 - 已安装并登录 Codex CLI（已使用 `codex-cli 0.144.4` 验证）
 
-## 安装
+## 安装与使用
 
 1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)。
 2. 解压后将 **Codex Usage Meter.app** 拖入“应用程序”。
@@ -52,13 +54,13 @@ swift run --disable-sandbox CodexMeterCoreTests
 
 Codex Usage Meter 使用本机 Codex app-server 协议。新版 Codex CLI 可能需要同步适配，因此反馈问题时请附上 CLI 版本。
 
-## 隐私
+## 隐私优先
 
-所有数据都留在你的 Mac 上，简明说明见 [PRIVACY.md](PRIVACY.md)。
+你的用量只属于你。所有数据都留在 Mac 上，应用只会记住你选择的 Codex 可执行文件路径。简明说明见 [PRIVACY.md](PRIVACY.md)。
 
-## 项目状态
+## 一个小而认真的项目
 
-这是一个早期、专注的小工具，欢迎反馈 Bug 和轻量改进。维护者发布流程见 [RELEASING.md](RELEASING.md)。
+这个项目来自一个很简单的愿望：让 Codex 额度更容易看懂，又不打扰正在进行的工作。它还很年轻，也会刻意保持专注。如果哪里用着不顺，或者你想到一个能让体验更舒服的小改进，都欢迎告诉我。维护者发布流程见 [RELEASING.md](RELEASING.md)。
 
 ## 开源许可
 

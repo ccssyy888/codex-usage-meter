@@ -83,6 +83,7 @@ func runProtocolAndFormattingTests() {
     check("只有连接级错误要求重启") {
         expect(CodexAppServerError.initializationTimedOut(nil).requiresConnectionRestart, "初始化超时应重启")
         expect(CodexAppServerError.rateLimitRequestTimedOut(nil).requiresConnectionRestart, "刷新超时应重启")
+        expect(CodexAppServerError.processTerminated(nil).requiresConnectionRestart, "进程退出应重启")
         expect(!CodexAppServerError.protocolError("请求失败").requiresConnectionRestart, "普通协议错误不应重启")
     }
 }

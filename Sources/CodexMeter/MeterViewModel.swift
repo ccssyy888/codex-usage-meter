@@ -48,7 +48,6 @@ final class MeterViewModel: ObservableObject {
     private var wakeObserver: NSObjectProtocol?
     private var reconnectAttempt = 0
     private var stopped = true
-    private var currentExecutableURL: URL?
     private let demoMode: Bool
 
     init(demoMode: Bool = false) {
@@ -139,19 +138,12 @@ final class MeterViewModel: ObservableObject {
             return
         }
         UserDefaults.standard.set(url.path, forKey: DefaultsKey.codexPath)
-        currentExecutableURL = url
         reconnectWorkItem?.cancel()
         client.stop()
         connect(resetBackoff: true)
     }
 
     private func bindClient() {
-        client.onReady = { [weak self] in
-            guard let self else { return }
-            if self.snapshot == nil {
-                self.status = .loading
-            }
-        }
         client.onSnapshot = { [weak self] snapshot, resetCredits in
             guard let self else { return }
             self.snapshot = snapshot
@@ -175,11 +167,8 @@ final class MeterViewModel: ObservableObject {
             self.handle(error: error)
             if (error as? CodexAppServerError)?.requiresConnectionRestart == true {
                 self.client.stop()
-                self.scheduleReconnect(preserveStatus: true)
+                self.scheduleReconnect()
             }
-        }
-        client.onTermination = { [weak self] in
-            self?.scheduleReconnect(preserveStatus: true)
         }
     }
 
@@ -193,12 +182,10 @@ final class MeterViewModel: ObservableObject {
 
         let persistedPath = UserDefaults.standard.string(forKey: DefaultsKey.codexPath)
         guard let executableURL = CodexPathResolver.resolve(persistedPath: persistedPath) else {
-            currentExecutableURL = nil
             status = .codexNotFound
             return
         }
 
-        currentExecutableURL = executableURL
         if snapshot == nil {
             status = .loading
         }
@@ -211,15 +198,12 @@ final class MeterViewModel: ObservableObject {
             )
         } catch {
             handle(error: error)
-            scheduleReconnect(preserveStatus: true)
+            scheduleReconnect()
         }
     }
 
-    private func scheduleReconnect(preserveStatus: Bool = false) {
-        guard !stopped, currentExecutableURL != nil else { return }
-        if !preserveStatus {
-            status = snapshot == nil ? .error("Codex app-server 已退出，正在重连。") : .stale(nil)
-        }
+    private func scheduleReconnect() {
+        guard !stopped else { return }
         let delay = ReconnectPolicy.delay(forAttempt: reconnectAttempt)
         reconnectAttempt += 1
         let workItem = DispatchWorkItem { [weak self] in

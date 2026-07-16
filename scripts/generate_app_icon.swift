@@ -109,9 +109,6 @@ func renderIcon(pixelSize: Int) throws -> Data {
     return png
 }
 
-try renderIcon(pixelSize: 1024)
-    .write(to: outputDirectory.appendingPathComponent("AppIcon.png"))
-
 func runTool(_ executable: String, arguments: [String]) throws {
     let process = Process()
     process.executableURL = URL(fileURLWithPath: executable)
