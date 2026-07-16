@@ -4,7 +4,7 @@
 
 [English](README.md)
 
-**[下载 v0.1.1 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.1) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip.sha256)
+**[下载 v0.1.2 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.2) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip.sha256)
 
 <p align="center">
   <img src="docs/images/overview-zh-cn.jpg" width="560" alt="Codex Usage Meter 显示额度和每次额度重置的到期时间">
@@ -29,7 +29,7 @@
 
 ## 安装与使用
 
-1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)。
+1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip)。
 2. 解压后将 **Codex Usage Meter.app** 拖入“应用程序”。
 3. 从“应用程序”打开软件。
 
@@ -38,7 +38,7 @@
 可选：将 ZIP 和校验文件下载到同一目录后验证完整性：
 
 ```bash
-shasum -a 256 -c Codex-Usage-Meter-v0.1.1-macOS.zip.sha256
+shasum -a 256 -c Codex-Usage-Meter-v0.1.2-macOS.zip.sha256
 ```
 
 从源码构建：

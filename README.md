@@ -4,7 +4,7 @@
 
 [简体中文](README.zh-CN.md)
 
-**[Download v0.1.1 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.1) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip.sha256)
+**[Download v0.1.2 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.2) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip.sha256)
 
 <p align="center">
   <img src="docs/images/overview-en.jpg" width="560" alt="Codex Usage Meter showing quota and reset credit expiries">
@@ -29,7 +29,7 @@ Codex Usage Meter talks only to your local `codex app-server --stdio` process. I
 
 ## Get started
 
-1. [Download the macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip).
+1. [Download the macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip).
 2. Unzip it and move **Codex Usage Meter.app** to Applications.
 3. Open the app from Applications.
 
@@ -38,7 +38,7 @@ This build is not notarized. If macOS blocks the first launch, try opening the a
 Optional integrity check, run from the folder containing both downloads:
 
 ```bash
-shasum -a 256 -c Codex-Usage-Meter-v0.1.1-macOS.zip.sha256
+shasum -a 256 -c Codex-Usage-Meter-v0.1.2-macOS.zip.sha256
 ```
 
 To build from source:

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2
+
+- Rename the Simplified Chinese reset-credit section to “额度重置” and use “次” consistently for its count and item labels.
+- Recover more reliably when the Codex app-server process terminates, without scheduling duplicate reconnect paths.
+- Refresh the English and Simplified Chinese product screenshots and polish the project documentation.
+- Add a release-synchronization policy and stronger post-publish verification steps.
+
 ## 0.1.1
 
 - Add prominent macOS download and checksum links to both README files.
