@@ -1,69 +1,69 @@
 # Codex Usage Meter
 
-**A quiet, native macOS companion that keeps your Codex limits close—without pulling you out of your work.**
+**一个安静待在 macOS 菜单栏里的 Codex 额度小助手：需要时一眼看清，不打断手头工作。**
 
-[简体中文](README.zh-CN.md)
+[English](README.en.md)
 
-**[Download v0.1.2 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.2) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip.sha256)
+**[下载 v0.1.2 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.2) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip.sha256)
 
 <p align="center">
-  <img src="docs/images/overview-en.jpg" width="560" alt="Codex Usage Meter showing quota and reset credit expiries">
+  <img src="docs/images/overview-zh-cn.jpg" width="560" alt="Codex Usage Meter 显示额度和每次额度重置的到期时间">
 </p>
 
-When you are deep in a session, the last thing you want is another dashboard. Codex Usage Meter lives quietly in your menu bar and gives you the answer at a glance:
+写代码正投入时，最不想做的就是停下来翻找另一个页面。Codex Usage Meter 平时安静地待在菜单栏，需要时看一眼，就能知道：
 
-- Glance at your 5-hour quota without leaving the app you are working in
-- Keep an eye on weekly usage and exact reset times
-- See every reset credit together with its own expiry date
-- Stay up to date through automatic refresh and reconnection
-- Feel at home in English or Simplified Chinese
-- Work with confidence: no analytics, ads, account-file parsing, or log scraping
+- 不离开正在使用的应用，就能看到 5 小时剩余额度
+- 随时了解本周用量和准确刷新时间
+- 每次额度重置单独列出，到期时间清清楚楚
+- 自动刷新，连接中断后也会自己恢复
+- 简体中文和英文都用得顺手
+- 放心使用：无广告、无统计，不读取账号文件，也不扫描日志
 
-Codex Usage Meter talks only to your local `codex app-server --stdio` process. It does **not** read or store `~/.codex/auth.json`.
+应用只通过本机的 `codex app-server --stdio` 获取数据，**不会读取或保存** `~/.codex/auth.json`。
 
-## What you need
+## 开始之前
 
-- macOS 14 or later
-- Apple Silicon or Intel Mac
-- Codex CLI installed and signed in (tested with `codex-cli 0.144.4`)
+- macOS 14 或更高版本
+- Apple Silicon 或 Intel Mac
+- 已安装并登录 Codex CLI（已使用 `codex-cli 0.144.4` 验证）
 
-## Get started
+## 安装与使用
 
-1. [Download the macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip).
-2. Unzip it and move **Codex Usage Meter.app** to Applications.
-3. Open the app from Applications.
+1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip)。
+2. 解压后将 **Codex Usage Meter.app** 拖入“应用程序”。
+3. 从“应用程序”打开软件。
 
-This build is not notarized. If macOS blocks the first launch, try opening the app once, then go to **System Settings → Privacy & Security → Security** and choose **Open Anyway**. Only bypass this warning if you downloaded the app from this repository and trust it. See [Apple's instructions](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unknown-developer-mh40616/mac).
+当前安装包未经过 Apple 公证。如果 macOS 首次打开时阻止运行，请先尝试打开一次，再进入 **系统设置 → 隐私与安全性 → 安全性**，选择 **仍要打开**。只有在确认安装包来自本仓库并且你信任它时才应绕过提示。具体步骤见 [Apple 官方说明](https://support.apple.com/zh-cn/guide/mac-help/mh40616/mac)。
 
-Optional integrity check, run from the folder containing both downloads:
+可选：将 ZIP 和校验文件下载到同一目录后验证完整性：
 
 ```bash
 shasum -a 256 -c Codex-Usage-Meter-v0.1.2-macOS.zip.sha256
 ```
 
-To build from source:
+从源码构建：
 
-- Xcode 16 or a Swift 6.0+ toolchain
+- Xcode 16 或 Swift 6.0+ 工具链
 
 ```bash
 swift run --disable-sandbox CodexMeterCoreTests
 ./scripts/build_app.sh
 ```
 
-The app is created at `outputs/Codex Usage Meter.app`. If Codex is not found automatically, open the meter menu and choose the `codex` executable manually.
+应用会生成在 `outputs/Codex Usage Meter.app`。如果没有自动找到 Codex，可打开菜单栏面板，手动选择 `codex` 可执行文件。
 
-Codex Usage Meter uses the local Codex app-server protocol. New Codex CLI releases may require compatibility updates, so please include your CLI version when reporting a problem.
+Codex Usage Meter 使用本机 Codex app-server 协议。新版 Codex CLI 可能需要同步适配，因此反馈问题时请附上 CLI 版本。
 
-## Private by design
+## 隐私优先
 
-Your usage is yours. Everything stays on your Mac, and the app only remembers the Codex executable you choose. See [PRIVACY.md](PRIVACY.md) for the short, plain-language policy.
+你的用量只属于你。所有数据都留在 Mac 上，应用只会记住你选择的 Codex 可执行文件路径。简明说明见 [PRIVACY.md](PRIVACY.md)。
 
-## A small project, growing carefully
+## 一个小而认真的项目
 
-This project started from a simple wish: make Codex limits easy to understand without getting in the way. It is still early and intentionally focused. If something feels off—or you have a small idea that would make it nicer to use—bug reports and thoughtful improvements are very welcome. See [RELEASING.md](RELEASING.md) for the maintainer release checklist.
+这个项目来自一个很简单的愿望：让 Codex 额度更容易看懂，又不打扰正在进行的工作。它还很年轻，也会刻意保持专注。如果哪里用着不顺，或者你想到一个能让体验更舒服的小改进，都欢迎告诉我。维护者发布流程见 [RELEASING.md](RELEASING.md)。
 
-## License
+## 开源许可
 
 [MIT](LICENSE) © 2026 ccssyy888
 
-Codex Usage Meter is an independent, unofficial project. It is not affiliated with or endorsed by OpenAI. “OpenAI” and “Codex” are trademarks of their respective owner.
+Codex Usage Meter 是独立的非官方项目，与 OpenAI 没有关联，也未获得 OpenAI 背书。“OpenAI”和“Codex”是其各自权利人的商标。
