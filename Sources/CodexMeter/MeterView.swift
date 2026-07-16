@@ -139,7 +139,7 @@ struct MeterDetailView: View {
     private var resetCreditsRow: some View {
         VStack(spacing: 0) {
             HStack(spacing: 8) {
-                Text(MeterLocalization.text("credits.title", fallback: "重置券"))
+                Text(MeterLocalization.text("credits.title", fallback: "额度重置"))
                     .font(.system(size: 13, weight: .semibold))
                     .tracking(0.15)
                     .foregroundStyle(Color.primary.opacity(0.82))
@@ -148,7 +148,7 @@ struct MeterDetailView: View {
                     Text(
                         MeterLocalization.format(
                             "credits.count",
-                            fallback: "%d 张",
+                            fallback: "%d 次",
                             resetCredits.availableCount
                         )
                     )
@@ -172,7 +172,7 @@ struct MeterDetailView: View {
                                     Text(
                                         MeterLocalization.format(
                                             "credits.item",
-                                            fallback: "第 %d 张",
+                                            fallback: "第 %d 次",
                                             index + 1
                                         )
                                     )

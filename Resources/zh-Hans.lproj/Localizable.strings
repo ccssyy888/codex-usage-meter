@@ -19,9 +19,9 @@
 "quota.countdown_time" = "%d:%02d:%02d 后刷新";
 "quota.date_format" = "M月d日 HH:mm";
 
-"credits.title" = "重置券";
-"credits.count" = "%d 张";
-"credits.item" = "第 %d 张";
+"credits.title" = "额度重置";
+"credits.count" = "%d 次";
+"credits.item" = "第 %d 次";
 "credits.expiry_unknown" = "到期时间未知";
 "credits.expires" = "%@ 到期";
 

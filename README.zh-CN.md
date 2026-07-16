@@ -7,14 +7,14 @@
 **[下载 v0.1.1 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.1) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.1/Codex-Usage-Meter-v0.1.1-macOS.zip.sha256)
 
 <p align="center">
-  <img src="docs/images/overview-zh-cn.jpg" width="560" alt="Codex Usage Meter 显示额度和每张重置券到期时间">
+  <img src="docs/images/overview-zh-cn.jpg" width="560" alt="Codex Usage Meter 显示额度和每次额度重置的到期时间">
 </p>
 
 写代码正投入时，最不想做的就是停下来翻找另一个页面。Codex Usage Meter 平时安静地待在菜单栏，需要时看一眼，就能知道：
 
 - 不离开正在使用的应用，就能看到 5 小时剩余额度
 - 随时了解本周用量和准确刷新时间
-- 每张重置券单独列出，到期时间清清楚楚
+- 每次额度重置单独列出，到期时间清清楚楚
 - 自动刷新，连接中断后也会自己恢复
 - 简体中文和英文都用得顺手
 - 放心使用：无广告、无统计，不读取账号文件，也不扫描日志
