@@ -7,8 +7,14 @@
 **[下载 v0.1.2 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.2) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.2/Codex-Usage-Meter-v0.1.2-macOS.zip.sha256)
 
 <p align="center">
-  <img src="docs/images/overview-zh-cn.jpg" width="560" alt="Codex Usage Meter 显示额度和每次额度重置的到期时间">
+  <img src="docs/images/menu-bar-collapsed-zh-cn.jpg" width="760" alt="Codex Usage Meter 在 macOS 菜单栏显示剩余 72% 额度">
 </p>
+<p align="center"><sub>收起时，剩余额度始终安静地显示在菜单栏里。</sub></p>
+
+<p align="center">
+  <img src="docs/images/overview-zh-cn.jpg" width="760" alt="Codex Usage Meter 展开后显示额度和每次额度重置的到期时间">
+</p>
+<p align="center"><sub>展开后，查看 5 小时、本周额度和每次额度重置的到期时间。</sub></p>
 
 写代码正投入时，最不想做的就是停下来翻找另一个页面。Codex Usage Meter 平时安静地待在菜单栏，需要时看一眼，就能知道：
 
