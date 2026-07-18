@@ -1,6 +1,6 @@
 # Codex Usage Meter
 
-**A quiet, native macOS companion that keeps your Codex limits close—without pulling you out of your work.**
+**A lightweight, native macOS menu bar app dedicated to Codex limits—there when you need it, quiet otherwise.**
 
 [简体中文](README.md)
 
@@ -20,6 +20,28 @@ When you are deep in a session, the last thing you want is another dashboard. Co
 - Work with confidence: no analytics, ads, account-file parsing, or log scraping
 
 Codex Usage Meter talks only to your local `codex app-server --stdio` process. It does **not** read or store `~/.codex/auth.json`.
+
+## Design principles: lightweight by scope
+
+“Lightweight” here is not just about having fewer features. It means keeping the product boundary, interaction path, configuration, and data access narrow around one job: checking Codex limits at a glance.
+
+- **There when needed, quiet otherwise.** A floating desktop control is easier to notice, but it still occupies the content area when collapsed and can cover code, webpages, or clicks. Quota is not a live market feed, so the app uses a stable menu bar entry with no desktop overlay or Dock icon.
+- **Do one job well.** The project focuses on Codex instead of growing into a multi-provider AI console. That narrower scope means fewer choices, a more direct interface, and a clearer maintenance boundary.
+- **Enough information at a glance.** The five-hour window, weekly window, exact reset times, and individual reset-credit expiries fit in one small popover—click, check, and keep working.
+- **Keep the data path short and explicit.** Quota data travels from the local Codex app-server to the menu bar and stops there. The app does not read `auth.json`, scan Codex logs, or upload quota data to another service.
+
+## Codex Usage Meter or CodexBar?
+
+Codex Usage Meter is not a replacement for [CodexBar](https://github.com/steipete/CodexBar). The two projects choose different boundaries: CodexBar optimizes for breadth, while Codex Usage Meter optimizes for focus.
+
+| | Codex Usage Meter | CodexBar |
+| --- | --- | --- |
+| Product scope | A small window dedicated to Codex limits | A unified usage and status tool for many AI coding providers |
+| Primary information | Five-hour, weekly, and reset-credit limits | Multi-provider limits, resets, spend, status, and more, depending on the provider |
+| Data path | Only the local `codex app-server --stdio` process | Provider-specific CLIs, OAuth, APIs, browser sessions, or local files |
+| Best fit | You use mainly Codex and want minimal setup and a short path to the answer | You use several AI services and want centralized management and broader capabilities |
+
+If you need a broad AI usage center, CodexBar is the better fit. If you want Codex quota to sit quietly in your Mac menu bar, this project is built around that choice.
 
 ## What you need
 
