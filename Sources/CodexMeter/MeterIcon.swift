@@ -1,34 +1,55 @@
 import AppKit
 
 enum MeterIcon {
-    static let menuBarImage: NSImage = {
+    static func menuBarImage(remainingPercent: Int?) -> NSImage {
         let side: CGFloat = 18
+        let fillFraction = remainingPercent.map {
+            CGFloat(min(max($0, 0), 100)) / 100
+        }
         let image = NSImage(size: NSSize(width: side, height: side), flipped: false) { rect in
             guard let context = NSGraphicsContext.current?.cgContext else { return false }
 
             let center = CGPoint(x: rect.midX, y: rect.midY)
-            let radius = side * 0.30
-            let lineWidth = side * 0.115
+            let hexagon = CGMutablePath()
+            hexagon.addLines(between: [
+                CGPoint(x: center.x, y: rect.maxY - side * 0.08),
+                CGPoint(x: rect.maxX - side * 0.10, y: center.y + side * 0.22),
+                CGPoint(x: rect.maxX - side * 0.10, y: center.y - side * 0.22),
+                CGPoint(x: center.x, y: rect.minY + side * 0.08),
+                CGPoint(x: rect.minX + side * 0.10, y: center.y - side * 0.22),
+                CGPoint(x: rect.minX + side * 0.10, y: center.y + side * 0.22),
+            ])
+            hexagon.closeSubpath()
 
             context.setShouldAntialias(true)
-            context.setStrokeColor(NSColor.black.cgColor)
-            context.setFillColor(NSColor.black.cgColor)
-            context.setLineWidth(lineWidth)
-            context.setLineCap(.round)
+            context.setLineJoin(.round)
 
-            for segment in 0..<6 {
-                let start = degrees(CGFloat(segment) * 60 + 10)
-                context.addArc(
-                    center: center,
-                    radius: radius,
-                    startAngle: start,
-                    endAngle: start + degrees(40),
-                    clockwise: false
+            context.saveGState()
+            context.addPath(hexagon)
+            context.clip()
+            context.setFillColor(NSColor.black.withAlphaComponent(0.10).cgColor)
+            context.fill(rect)
+
+            if let fillFraction {
+                context.setFillColor(NSColor.black.cgColor)
+                context.fill(
+                    CGRect(
+                        x: rect.minX,
+                        y: rect.minY,
+                        width: rect.width,
+                        height: rect.height * fillFraction
+                    )
                 )
-                context.strokePath()
             }
+            context.restoreGState()
 
-            let hubRadius = side * 0.075
+            context.addPath(hexagon)
+            context.setStrokeColor(NSColor.black.cgColor)
+            context.setLineWidth(side * 0.085)
+            context.strokePath()
+
+            let hubRadius = side * 0.07
+            context.setFillColor(NSColor.black.cgColor)
             context.fillEllipse(
                 in: CGRect(
                     x: center.x - hubRadius,
@@ -42,9 +63,5 @@ enum MeterIcon {
         image.isTemplate = true
         image.accessibilityDescription = "Codex Usage Meter"
         return image
-    }()
-
-    private static func degrees(_ value: CGFloat) -> CGFloat {
-        value * .pi / 180
     }
 }

@@ -29,7 +29,7 @@ final class MenuBarController: NSObject {
     private func configureStatusItem() {
         guard let button = statusItem.button else { return }
 
-        button.image = MeterIcon.menuBarImage
+        button.image = MeterIcon.menuBarImage(remainingPercent: nil)
         button.imagePosition = .imageLeading
         button.font = .monospacedDigitSystemFont(ofSize: 12, weight: .semibold)
         button.target = self
@@ -79,6 +79,7 @@ final class MenuBarController: NSObject {
         guard let button = statusItem.button else { return }
 
         let remaining = viewModel.remainingPercent
+        button.image = MeterIcon.menuBarImage(remainingPercent: remaining)
         button.title = remaining.map { "\($0)%" } ?? "--"
 
         let quotaDescription = remaining.map {

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.3
+
+- Replace the static menu bar mark with a compact hexagonal quota tank that fills from bottom to top as the five-hour allowance changes.
+- Keep unavailable quota data visually distinct with an empty template icon that adapts cleanly to macOS menu bar appearances.
+
 ## 0.1.2
 
 - Rename the Simplified Chinese reset-credit section to “额度重置” and use “次” consistently for its count and item labels.
