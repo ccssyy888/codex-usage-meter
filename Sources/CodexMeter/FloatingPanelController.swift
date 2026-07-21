@@ -30,8 +30,8 @@ final class MenuBarController: NSObject {
         guard let button = statusItem.button else { return }
 
         button.image = MeterIcon.menuBarImage(remainingPercent: nil)
-        button.imagePosition = .imageLeading
-        button.font = .monospacedDigitSystemFont(ofSize: 12, weight: .semibold)
+        button.imagePosition = .imageOnly
+        button.imageScaling = .scaleNone
         button.target = self
         button.action = #selector(togglePopover)
     }
@@ -80,7 +80,6 @@ final class MenuBarController: NSObject {
 
         let remaining = viewModel.remainingPercent
         button.image = MeterIcon.menuBarImage(remainingPercent: remaining)
-        button.title = remaining.map { "\($0)%" } ?? "--"
 
         let quotaDescription = remaining.map {
             MeterLocalization.format("quota.remaining_percent", fallback: "剩余 %d%%", $0)

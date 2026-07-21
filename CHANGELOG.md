@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.4
+
+- Replace the hexagonal quota tank and separate percentage label with one compact six-lobed menu bar badge.
+- Show the remaining five-hour quota as a tightly spaced cut-out number inside the badge, reducing menu bar width while keeping the value visible at a glance.
+
 ## 0.1.3
 
 - Replace the static menu bar mark with a compact hexagonal quota tank that fills from bottom to top as the five-hour allowance changes.

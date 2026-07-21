@@ -4,15 +4,15 @@
 
 [English](README.en.md)
 
-**[下载 v0.1.3 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.3/Codex-Usage-Meter-v0.1.3-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.3) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.3/Codex-Usage-Meter-v0.1.3-macOS.zip.sha256)
+**[下载 v0.1.4 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.4) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip.sha256)
 
 <p align="center">
-  <img src="docs/images/menu-bar-collapsed-zh-cn.jpg" width="760" alt="Codex Usage Meter 在 macOS 菜单栏显示剩余 72% 额度">
+  <img src="docs/images/menu-bar-collapsed-v0.1.4.jpg" width="760" alt="Codex Usage Meter 在 macOS 菜单栏的六瓣图标内显示剩余额度 72">
 </p>
 <p align="center"><sub>收起时，剩余额度始终安静地显示在菜单栏里。</sub></p>
 
 <p align="center">
-  <img src="docs/images/overview-zh-cn.jpg" width="760" alt="Codex Usage Meter 展开后显示额度和每次额度重置的到期时间">
+  <img src="docs/images/overview-zh-cn-v0.1.4.jpg" width="760" alt="Codex Usage Meter 展开后显示额度和每次额度重置的到期时间">
 </p>
 <p align="center"><sub>展开后，查看 5 小时、本周额度和每次额度重置的到期时间。</sub></p>
 
@@ -57,7 +57,7 @@ Codex Usage Meter 不是 [CodexBar](https://github.com/steipete/CodexBar) 的替
 
 ## 安装与使用
 
-1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.3/Codex-Usage-Meter-v0.1.3-macOS.zip)。
+1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip)。
 2. 解压后将 **Codex Usage Meter.app** 拖入“应用程序”。
 3. 从“应用程序”打开软件。
 
@@ -66,7 +66,7 @@ Codex Usage Meter 不是 [CodexBar](https://github.com/steipete/CodexBar) 的替
 可选：将 ZIP 和校验文件下载到同一目录后验证完整性：
 
 ```bash
-shasum -a 256 -c Codex-Usage-Meter-v0.1.3-macOS.zip.sha256
+shasum -a 256 -c Codex-Usage-Meter-v0.1.4-macOS.zip.sha256
 ```
 
 从源码构建：
