@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5
+
+- Explicitly disable Codex remote control in the quota-only app-server launched by the meter, preventing it from competing with ChatGPT's remote connection.
+- Add regression coverage for the isolated app-server launch arguments.
+
 ## 0.1.4
 
 - Replace the hexagonal quota tank and separate percentage label with one compact six-lobed menu bar badge.

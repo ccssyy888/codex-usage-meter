@@ -4,7 +4,7 @@
 
 [English](README.en.md)
 
-**[下载 v0.1.4 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.4) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip.sha256)
+**[下载 v0.1.5 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.5) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip.sha256)
 
 <p align="center">
   <img src="docs/images/menu-bar-collapsed-v0.1.4.jpg" width="760" alt="Codex Usage Meter 在 macOS 菜单栏的六瓣图标内显示剩余额度 72">
@@ -25,7 +25,7 @@
 - 简体中文和英文都用得顺手
 - 放心使用：无广告、无统计，不读取账号文件，也不扫描日志
 
-应用只通过本机的 `codex app-server --stdio` 获取数据，**不会读取或保存** `~/.codex/auth.json`。
+应用只通过自己启动的本机 Codex app-server 获取数据，并明确禁用 `remote_control` 功能，避免与 ChatGPT 的远程连接竞争。它**不会读取或保存** `~/.codex/auth.json`。
 
 ## 设计理念：轻量是一种产品边界
 
@@ -44,7 +44,7 @@ Codex Usage Meter 不是 [CodexBar](https://github.com/steipete/CodexBar) 的替
 | --- | --- | --- |
 | 产品定位 | 一个只看 Codex 额度的小窗口 | 多个 AI 编程服务的统一用量与状态工具 |
 | 关注信息 | 5 小时、本周、额度重置 | 多服务额度、重置、费用、状态等，具体能力随服务而异 |
-| 数据路径 | 只连接本机 `codex app-server --stdio` | 按服务使用 CLI、OAuth、API、浏览器会话或本地文件等来源 |
+| 数据路径 | 独立启动本机 Codex app-server，并禁用远程控制 | 按服务使用 CLI、OAuth、API、浏览器会话或本地文件等来源 |
 | 更适合 | 只用或主要使用 Codex，希望少配置、点一下就看完 | 同时使用多种 AI 服务，希望集中管理和扩展能力 |
 
 如果你需要一套覆盖面广的 AI 用量中心，CodexBar 更合适；如果你只想让 Codex 额度安静地待在 Mac 菜单栏里，这个项目就是为这种取舍而做的。
@@ -53,11 +53,11 @@ Codex Usage Meter 不是 [CodexBar](https://github.com/steipete/CodexBar) 的替
 
 - macOS 14 或更高版本
 - Apple Silicon 或 Intel Mac
-- 已安装并登录 Codex CLI（已使用 `codex-cli 0.144.4` 验证）
+- 已安装并登录 Codex CLI（已使用 `codex-cli 0.146.0` 验证）
 
 ## 安装与使用
 
-1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip)。
+1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip)。
 2. 解压后将 **Codex Usage Meter.app** 拖入“应用程序”。
 3. 从“应用程序”打开软件。
 
@@ -66,7 +66,7 @@ Codex Usage Meter 不是 [CodexBar](https://github.com/steipete/CodexBar) 的替
 可选：将 ZIP 和校验文件下载到同一目录后验证完整性：
 
 ```bash
-shasum -a 256 -c Codex-Usage-Meter-v0.1.4-macOS.zip.sha256
+shasum -a 256 -c Codex-Usage-Meter-v0.1.5-macOS.zip.sha256
 ```
 
 从源码构建：

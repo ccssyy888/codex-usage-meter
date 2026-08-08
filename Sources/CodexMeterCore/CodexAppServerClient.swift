@@ -112,6 +112,8 @@ public enum DiagnosticSummary {
 }
 
 public final class CodexAppServerClient {
+    public static let launchArguments = ["app-server", "--disable", "remote_control", "--stdio"]
+
     public var onSnapshot: ((RateLimitSnapshot, ResetCreditsSnapshot?) -> Void)?
     public var onSparseUpdate: ((RateLimitSnapshot) -> Void)?
     public var onFailure: ((Error) -> Void)?
@@ -157,7 +159,7 @@ public final class CodexAppServerClient {
         let outputPipe = Pipe()
         let errorPipe = Pipe()
         process.executableURL = executableURL
-        process.arguments = ["app-server", "--stdio"]
+        process.arguments = Self.launchArguments
         process.standardInput = inputPipe
         process.standardOutput = outputPipe
         process.standardError = errorPipe

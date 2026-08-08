@@ -4,7 +4,7 @@
 
 [简体中文](README.md)
 
-**[Download v0.1.4 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.4) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip.sha256)
+**[Download v0.1.5 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.5) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip.sha256)
 
 <p align="center">
   <img src="docs/images/menu-bar-collapsed-v0.1.4.jpg" width="760" alt="Codex Usage Meter showing the remaining quota inside a compact six-lobed menu bar badge">
@@ -24,7 +24,7 @@ When you are deep in a session, the last thing you want is another dashboard. Co
 - Feel at home in English or Simplified Chinese
 - Work with confidence: no analytics, ads, account-file parsing, or log scraping
 
-Codex Usage Meter talks only to your local `codex app-server --stdio` process. It does **not** read or store `~/.codex/auth.json`.
+Codex Usage Meter talks only to the local Codex app-server it launches, with `remote_control` explicitly disabled so it cannot compete with ChatGPT's remote connection. It does **not** read or store `~/.codex/auth.json`.
 
 ## Design principles: lightweight by scope
 
@@ -43,7 +43,7 @@ Codex Usage Meter is not a replacement for [CodexBar](https://github.com/steipet
 | --- | --- | --- |
 | Product scope | A small window dedicated to Codex limits | A unified usage and status tool for many AI coding providers |
 | Primary information | Five-hour, weekly, and reset-credit limits | Multi-provider limits, resets, spend, status, and more, depending on the provider |
-| Data path | Only the local `codex app-server --stdio` process | Provider-specific CLIs, OAuth, APIs, browser sessions, or local files |
+| Data path | Launches an isolated local Codex app-server with remote control disabled | Provider-specific CLIs, OAuth, APIs, browser sessions, or local files |
 | Best fit | You use mainly Codex and want minimal setup and a short path to the answer | You use several AI services and want centralized management and broader capabilities |
 
 If you need a broad AI usage center, CodexBar is the better fit. If you want Codex quota to sit quietly in your Mac menu bar, this project is built around that choice.
@@ -52,11 +52,11 @@ If you need a broad AI usage center, CodexBar is the better fit. If you want Cod
 
 - macOS 14 or later
 - Apple Silicon or Intel Mac
-- Codex CLI installed and signed in (tested with `codex-cli 0.144.4`)
+- Codex CLI installed and signed in (tested with `codex-cli 0.146.0`)
 
 ## Get started
 
-1. [Download the macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.4/Codex-Usage-Meter-v0.1.4-macOS.zip).
+1. [Download the macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip).
 2. Unzip it and move **Codex Usage Meter.app** to Applications.
 3. Open the app from Applications.
 
@@ -65,7 +65,7 @@ This build is not notarized. If macOS blocks the first launch, try opening the a
 Optional integrity check, run from the folder containing both downloads:
 
 ```bash
-shasum -a 256 -c Codex-Usage-Meter-v0.1.4-macOS.zip.sha256
+shasum -a 256 -c Codex-Usage-Meter-v0.1.5-macOS.zip.sha256
 ```
 
 To build from source:

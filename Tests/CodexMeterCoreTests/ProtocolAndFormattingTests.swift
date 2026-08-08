@@ -2,6 +2,13 @@ import CodexMeterCore
 import Foundation
 
 func runProtocolAndFormattingTests() {
+    check("额度进程明确隔离远程控制") {
+        expect(
+            CodexAppServerClient.launchArguments == ["app-server", "--disable", "remote_control", "--stdio"],
+            "启动额度 app-server 时必须禁用 remote_control"
+        )
+    }
+
     check("握手和额度请求是 JSONL") {
         let initialize = try require(
             try JSONSerialization.jsonObject(
