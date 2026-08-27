@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.6
+
+- Disable remote control before the quota-only app-server starts, including on Codex CLI versions where the legacy `remote_control` feature flag has been removed.
+
 ## 0.1.5
 
 - Explicitly disable Codex remote control in the quota-only app-server launched by the meter, preventing it from competing with ChatGPT's remote connection.

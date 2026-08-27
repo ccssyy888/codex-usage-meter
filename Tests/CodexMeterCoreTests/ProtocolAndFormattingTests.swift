@@ -5,7 +5,18 @@ func runProtocolAndFormattingTests() {
     check("额度进程明确隔离远程控制") {
         expect(
             CodexAppServerClient.launchArguments == ["app-server", "--disable", "remote_control", "--stdio"],
-            "启动额度 app-server 时必须禁用 remote_control"
+            "旧版 Codex CLI 仍需通过启动参数禁用 remote_control"
+        )
+        let environment = CodexAppServerClient.launchEnvironment(
+            inheriting: ["PATH": "/test/bin"]
+        )
+        expect(
+            environment[CodexAppServerClient.remoteControlDisabledEnvironmentKey] == "1",
+            "新版 Codex CLI 必须在进程启动前禁用远程控制"
+        )
+        expect(
+            environment["PATH"] == "/test/bin",
+            "隔离远程控制时必须保留父进程环境"
         )
     }
 

@@ -4,7 +4,7 @@
 
 [简体中文](README.md)
 
-**[Download v0.1.5 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.5) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip.sha256)
+**[Download v0.1.6 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.6/Codex-Usage-Meter-v0.1.6-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.6) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.6/Codex-Usage-Meter-v0.1.6-macOS.zip.sha256)
 
 <p align="center">
   <img src="docs/images/menu-bar-collapsed-v0.1.4.jpg" width="760" alt="Codex Usage Meter showing the remaining quota inside a compact six-lobed menu bar badge">
@@ -56,7 +56,7 @@ If you need a broad AI usage center, CodexBar is the better fit. If you want Cod
 
 ## Get started
 
-1. [Download the macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.5/Codex-Usage-Meter-v0.1.5-macOS.zip).
+1. [Download the macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.6/Codex-Usage-Meter-v0.1.6-macOS.zip).
 2. Unzip it and move **Codex Usage Meter.app** to Applications.
 3. Open the app from Applications.
 
@@ -65,7 +65,7 @@ This build is not notarized. If macOS blocks the first launch, try opening the a
 Optional integrity check, run from the folder containing both downloads:
 
 ```bash
-shasum -a 256 -c Codex-Usage-Meter-v0.1.5-macOS.zip.sha256
+shasum -a 256 -c Codex-Usage-Meter-v0.1.6-macOS.zip.sha256
 ```
 
 To build from source:

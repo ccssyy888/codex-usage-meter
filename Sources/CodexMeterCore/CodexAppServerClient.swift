@@ -112,7 +112,18 @@ public enum DiagnosticSummary {
 }
 
 public final class CodexAppServerClient {
+    // Newer CLIs ignore the legacy feature flag and otherwise inherit the user's persisted remote state.
+    public static let remoteControlDisabledEnvironmentKey =
+        "CODEX_INTERNAL_APP_SERVER_REMOTE_CONTROL_DISABLED"
     public static let launchArguments = ["app-server", "--disable", "remote_control", "--stdio"]
+
+    public static func launchEnvironment(
+        inheriting environment: [String: String] = ProcessInfo.processInfo.environment
+    ) -> [String: String] {
+        var environment = environment
+        environment[remoteControlDisabledEnvironmentKey] = "1"
+        return environment
+    }
 
     public var onSnapshot: ((RateLimitSnapshot, ResetCreditsSnapshot?) -> Void)?
     public var onSparseUpdate: ((RateLimitSnapshot) -> Void)?
@@ -160,6 +171,7 @@ public final class CodexAppServerClient {
         let errorPipe = Pipe()
         process.executableURL = executableURL
         process.arguments = Self.launchArguments
+        process.environment = Self.launchEnvironment()
         process.standardInput = inputPipe
         process.standardOutput = outputPipe
         process.standardError = errorPipe
