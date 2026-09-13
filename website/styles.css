@@ -1,0 +1,87 @@
+:root {
+  color-scheme: light;
+  --paper: #f5f3ee;
+  --ink: #292e2b;
+  --muted: #666d67;
+  --line: #dedfd8;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 32px; }
+body, h1, h2, p, figure, dl, dd { margin: 0; }
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 4px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid #486352; outline-offset: 5px; }
+::selection { background: #d9e1d4; }
+.site-header, main, .site-footer { width: min(1160px, 88%); margin-inline: auto; }
+.skip-link { position: absolute; left: 16px; top: 12px; padding: 10px 16px; background: var(--ink); color: var(--paper); transform: translateY(-160%); z-index: 2; }
+.skip-link:focus { transform: none; }
+.site-header { min-height: 76px; display: flex; align-items: center; }
+.brand { font-size: 15px; font-weight: 600; white-space: nowrap; }
+.hero { display: grid; grid-template-columns: .95fr 1.15fr; gap: 46px; align-items: center; padding: 76px 0 90px; }
+.hero > *, .download-top > * { min-width: 0; }
+h1 { font-size: clamp(36px, 3.6vw, 52px); line-height: 1.3; font-weight: 500; letter-spacing: -1.8px; }
+.intro { max-width: 350px; font-size: 15px; color: var(--muted); line-height: 1.9; margin: 24px 0 30px; }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; }
+.github-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; text-decoration: underline; text-decoration-color: #b5bcb4; text-underline-offset: 4px; }
+.github-link:hover { text-decoration-color: currentColor; }
+.button-primary { display: inline-flex; align-items: center; justify-content: center; padding: 13px 21px; border-radius: 6px; background: #2d3e34; color: #fff; font-size: 14px; line-height: 1.5; }
+.button-primary:hover { background: #405647; text-decoration: none; }
+.compatibility { font-size: 11px; color: var(--muted); line-height: 1.9; margin-top: 15px; }
+.product-stage img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.section { border-top: 1px solid var(--line); padding: 43px 0; }
+.section h2 { font-size: 19px; font-weight: 500; line-height: 1.6; letter-spacing: -.4px; }
+.features, .download-top { display: grid; grid-template-columns: 1fr 2fr; column-gap: 58px; }
+.product-facts > div { display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 0 0 18px; font-size: 14px; line-height: 1.8; }
+.product-facts > div:last-child { padding-bottom: 0; }
+.product-facts dt { font-weight: 500; }
+.product-facts dd { color: var(--muted); }
+.download-source { font-size: 12px; color: var(--muted); line-height: 1.8; }
+.release-links { display: flex; flex-wrap: wrap; gap: 22px; font-size: 12px; margin-top: 9px; line-height: 1.8; }
+.release-links a, .answer a { text-decoration: underline; text-decoration-color: #b5bcb4; text-underline-offset: 4px; }
+.release-links a:hover, .answer a:hover { text-decoration-color: currentColor; }
+.install-help { border-top: 1px solid var(--line); margin-top: 25px; }
+summary { cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; list-style: none; padding: 18px 0; font-size: 12px; line-height: 1.7; }
+summary::-webkit-details-marker { display: none; }
+summary > span { color: var(--muted); font-size: 18px; }
+details[open] summary > span { transform: rotate(45deg); }
+.answer { padding-bottom: 10px; font-size: 12px; line-height: 1.9; color: var(--muted); }
+.answer p + p { margin-top: 12px; }
+.site-footer { border-top: 1px solid var(--line); padding: 26px 0; }
+.footer-top, .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.footer-top .brand { font-size: 12px; font-weight: 500; }
+.footer-top nav { display: flex; gap: 22px; font-size: 12px; }
+.footer-bottom { align-items: start; margin-top: 20px; font-size: 10px; line-height: 1.8; color: var(--muted); }
+@media (max-width: 1000px) {
+  .hero { gap: 30px; padding: 58px 0 68px; }
+  h1 { font-size: 37px; letter-spacing: -1.3px; }
+  .intro { font-size: 14px; }
+  .features, .download-top { grid-template-columns: .8fr 2fr; column-gap: 35px; }
+}
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 34px; padding: 45px 0 48px; }
+  h1 { font-size: clamp(32px, 6.4vw, 45px); }
+  .hero-copy { max-width: 530px; }
+  .intro { max-width: none; margin: 20px 0 25px; }
+  .product-stage { max-width: 570px; width: 100%; margin-inline: auto; }
+  .features, .download-top { grid-template-columns: 1fr; row-gap: 24px; }
+  .section { padding: 32px 0; }
+  .section h2 { font-size: 18px; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+@media (max-width: 480px) {
+  .site-header { min-height: 68px; }
+  .brand { font-size: 12px; }
+  .github-link { font-size: 13px; }
+  h1 { font-size: clamp(30px, 8.2vw, 38px); letter-spacing: -1.2px; }
+  .intro { font-size: 13px; max-width: 280px; }
+  .button-primary { font-size: 13px; }
+  .compatibility { font-size: 10px; }
+  .product-facts > div { font-size: 13px; gap: 12px; grid-template-columns: 40px 1fr; }
+  .footer-top { flex-wrap: wrap; gap: 17px; }
+  .footer-top nav { font-size: 11px; gap: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

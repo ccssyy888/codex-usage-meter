@@ -1,5 +1,7 @@
 # Codex Usage Meter
 
+[官网](https://ccssyy888.github.io/codex-usage-meter/)
+
 **一个轻量、原生、只专注 Codex 的 macOS 菜单栏额度小助手：需要时一眼看清，平时安静待着。**
 
 [English](README.en.md)

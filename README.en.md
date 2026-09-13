@@ -1,5 +1,7 @@
 # Codex Usage Meter
 
+[Website](https://ccssyy888.github.io/codex-usage-meter/)
+
 **A lightweight, native macOS menu bar app dedicated to Codex limits—there when you need it, quiet otherwise.**
 
 [简体中文](README.md)
