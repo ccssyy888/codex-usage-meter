@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0 — 2026-09-13
+
+- Evaporate small grains upward from the menu bar badge while a local Codex task is in progress; stop when the task completes or is interrupted.
+- Detect task lifecycle events in session files held open for writing by live Codex processes, checking once per second. Support overlapping tasks and remove activity when the writer exits.
+- Read lifecycle fields locally without storing or uploading message content; do not traverse session history directories. Update privacy documentation for this additional data source.
+- Enlarge evaporating grains to 1.8–2.6 points, retain their contrast through most of the upward travel, and reserve a fixed 29-point icon width for menu-bar visibility. Keep quota digits legible, stop the animation timer when idle, and respect macOS Reduce Motion.
+- Skip content reads for unchanged files. Open activity files read-only without following leaf symlinks, and reject special files or files owned by another user.
+- Add `--demo --demo-activity` for an animation preview without running real tasks or consuming tokens.
+
 ## 0.1.6
 
 - Disable remote control before the quota-only app-server starts, including on Codex CLI versions where the legacy `remote_control` feature flag has been removed.

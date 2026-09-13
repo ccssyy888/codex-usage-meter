@@ -9,6 +9,9 @@ final class MenuBarController: NSObject {
     private let statusItem: NSStatusItem
     private let popover: NSPopover
     private var cancellables = Set<AnyCancellable>()
+    private var activityTimer: Timer?
+    private var activityStartedAt: TimeInterval = 0
+    private var isTaskRunning = false
 
     init(viewModel: MeterViewModel) {
         self.viewModel = viewModel
@@ -23,6 +26,7 @@ final class MenuBarController: NSObject {
     }
 
     deinit {
+        activityTimer?.invalidate()
         NSStatusBar.system.removeStatusItem(statusItem)
     }
 
@@ -60,9 +64,24 @@ final class MenuBarController: NSObject {
     private func observeViewModel() {
         viewModel.$snapshot
             .combineLatest(viewModel.$status)
+            .receive(on: RunLoop.main)
             .sink { [weak self] _, _ in
                 self?.updateStatusItem()
             }
+            .store(in: &cancellables)
+
+        viewModel.$isTaskRunning
+            .removeDuplicates()
+            .sink { [weak self] running in
+                self?.isTaskRunning = running
+                self?.updateActivityAnimation()
+            }
+            .store(in: &cancellables)
+
+        NSWorkspace.shared.notificationCenter
+            .publisher(for: NSWorkspace.accessibilityDisplayOptionsDidChangeNotification)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in self?.updateActivityAnimation() }
             .store(in: &cancellables)
 
         viewModel.$resetCredits
@@ -79,7 +98,7 @@ final class MenuBarController: NSObject {
         guard let button = statusItem.button else { return }
 
         let remaining = viewModel.remainingPercent
-        button.image = MeterIcon.menuBarImage(remainingPercent: remaining)
+        updateIcon()
 
         let quotaDescription = remaining.map {
             MeterLocalization.format("quota.remaining_percent", fallback: "剩余 %d%%", $0)
@@ -92,6 +111,39 @@ final class MenuBarController: NSObject {
         )
         button.setAccessibilityLabel("Codex Usage Meter")
         button.setAccessibilityValue(quotaDescription)
+    }
+
+    private func updateActivityAnimation() {
+        guard isTaskRunning, !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion else {
+            updateIcon()
+            return
+        }
+        let uptime = ProcessInfo.processInfo.systemUptime
+        guard activityTimer == nil else { return }
+        activityStartedAt = uptime
+        let timer = Timer(timeInterval: 1.0 / 24, repeats: true) { [weak self] _ in
+            Task { @MainActor in self?.updateIcon() }
+        }
+        timer.tolerance = 0.008
+        activityTimer = timer
+        RunLoop.main.add(timer, forMode: .common)
+        updateIcon()
+    }
+
+    private func updateIcon() {
+        let uptime = ProcessInfo.processInfo.systemUptime
+        if activityTimer != nil,
+           !isTaskRunning || NSWorkspace.shared.accessibilityDisplayShouldReduceMotion {
+            activityTimer?.invalidate()
+            activityTimer = nil
+        }
+        let elapsed = max(0, uptime - activityStartedAt)
+        let opacity = activityTimer == nil ? 0 : min(1, elapsed / 0.25)
+        statusItem.button?.image = MeterIcon.menuBarImage(
+            remainingPercent: viewModel.remainingPercent,
+            activityPhase: elapsed / 2.2,
+            activityOpacity: opacity
+        )
     }
 
     @objc private func togglePopover() {

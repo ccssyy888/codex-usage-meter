@@ -38,6 +38,7 @@ func check(_ name: String, _ body: () throws -> Void) {
 
 runRateLimitTests()
 runProtocolAndFormattingTests()
+runTaskActivityTests()
 
 if failureCount > 0 {
     print("\n验证失败：\(failureCount) 项")

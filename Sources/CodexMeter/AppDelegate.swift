@@ -10,7 +10,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         let arguments = ProcessInfo.processInfo.arguments
         let demoMode = arguments.contains("--demo")
-        let viewModel = MeterViewModel(demoMode: demoMode)
+        let viewModel = MeterViewModel(
+            demoMode: demoMode,
+            demoActivity: arguments.contains("--demo-activity")
+        )
         self.viewModel = viewModel
 
         if demoMode, arguments.contains("--demo-window") {

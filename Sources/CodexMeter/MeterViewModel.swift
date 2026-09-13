@@ -38,8 +38,10 @@ final class MeterViewModel: ObservableObject {
     @Published private(set) var resetCredits: ResetCreditsSnapshot?
     @Published private(set) var status: MeterConnectionStatus = .loading
     @Published private(set) var now = Date()
+    @Published private(set) var isTaskRunning = false
 
     private let client = CodexAppServerClient()
+    private let activityMonitor = TaskActivityMonitor()
     private let pathMonitor = NWPathMonitor()
     private let monitorQueue = DispatchQueue(label: "io.github.ccssyy888.CodexUsageMeter.network")
     private var tickTimer: Timer?
@@ -49,9 +51,12 @@ final class MeterViewModel: ObservableObject {
     private var reconnectAttempt = 0
     private var stopped = true
     private let demoMode: Bool
+    private let demoActivity: Bool
+    private var demoStartedAt = Date()
 
-    init(demoMode: Bool = false) {
+    init(demoMode: Bool = false, demoActivity: Bool = false) {
         self.demoMode = demoMode
+        self.demoActivity = demoMode && demoActivity
         bindClient()
     }
 
@@ -64,9 +69,11 @@ final class MeterViewModel: ObservableObject {
         stopped = false
         installTimers()
         if demoMode {
+            demoStartedAt = Date()
             loadDemoData()
             return
         }
+        startActivityMonitor()
         installWakeObserver()
         startNetworkMonitor()
         connect(resetBackoff: true)
@@ -74,6 +81,8 @@ final class MeterViewModel: ObservableObject {
 
     func stop() {
         stopped = true
+        activityMonitor.stop()
+        isTaskRunning = false
         reconnectWorkItem?.cancel()
         reconnectWorkItem = nil
         tickTimer?.invalidate()
@@ -138,6 +147,7 @@ final class MeterViewModel: ObservableObject {
             return
         }
         UserDefaults.standard.set(url.path, forKey: DefaultsKey.codexPath)
+        startActivityMonitor()
         reconnectWorkItem?.cancel()
         client.stop()
         connect(resetBackoff: true)
@@ -234,6 +244,10 @@ final class MeterViewModel: ObservableObject {
             Task { @MainActor in
                 guard let self else { return }
                 self.now = Date()
+                if self.demoActivity {
+                    self.isTaskRunning = self.now.timeIntervalSince(self.demoStartedAt)
+                        .truncatingRemainder(dividingBy: 8) < 5
+                }
                 if self.status == .connected,
                    let fetchedAt = self.snapshot?.fetchedAt,
                    self.now.timeIntervalSince(fetchedAt) > 90 {
@@ -262,6 +276,16 @@ final class MeterViewModel: ObservableObject {
             Task { @MainActor in
                 self?.refresh()
             }
+        }
+    }
+
+    private func startActivityMonitor() {
+        let executable = CodexPathResolver.resolve(
+            persistedPath: UserDefaults.standard.string(forKey: DefaultsKey.codexPath)
+        )
+        activityMonitor.start(executableURL: executable) { [weak self] running in
+            guard let self, !self.stopped else { return }
+            self.isTaskRunning = running
         }
     }
 

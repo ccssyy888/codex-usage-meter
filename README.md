@@ -4,28 +4,29 @@
 
 [English](README.en.md)
 
-**[下载 v0.1.6 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.6/Codex-Usage-Meter-v0.1.6-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.1.6) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.6/Codex-Usage-Meter-v0.1.6-macOS.zip.sha256)
+**[下载 v0.2.0 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.2.0) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip.sha256)
 
 <p align="center">
-  <img src="docs/images/menu-bar-collapsed-v0.1.4.jpg" width="760" alt="Codex Usage Meter 在 macOS 菜单栏的六瓣图标内显示剩余额度 72">
+  <img src="docs/images/activity-zh-cn-v0.2.0.gif" width="600" alt="Codex Usage Meter 在本地任务运行时向上蒸发颗粒，任务结束后恢复静止">
 </p>
-<p align="center"><sub>收起时，剩余额度始终安静地显示在菜单栏里。</sub></p>
+<p align="center"><sub>任务进行时，颗粒从图标上缘脱落并向上消散；任务结束后恢复静止。原尺寸模拟预览，数据为示例。</sub></p>
 
 <p align="center">
-  <img src="docs/images/overview-zh-cn-v0.1.4.jpg" width="760" alt="Codex Usage Meter 展开后显示额度和每次额度重置的到期时间">
+  <img src="docs/images/overview-zh-cn-v0.2.0.png" width="320" alt="Codex Usage Meter 展开后显示额度和每次额度重置的到期时间">
 </p>
-<p align="center"><sub>展开后，查看 5 小时、本周额度和每次额度重置的到期时间。</sub></p>
+<p align="center"><sub>展开后，查看 5 小时、本周额度和每次额度重置的到期时间。原生界面演示渲染，数据为示例。</sub></p>
 
 写代码正投入时，最不想做的就是停下来翻找另一个页面。Codex Usage Meter 平时安静地待在菜单栏，需要时看一眼，就能知道：
 
 - 不离开正在使用的应用，就能看到 5 小时剩余额度
 - 随时了解本周用量和准确刷新时间
 - 每次额度重置单独列出，到期时间清清楚楚
+- 本地任务运行时显示向上蒸发的颗粒，结束后恢复静止
 - 自动刷新，连接中断后也会自己恢复
 - 简体中文和英文都用得顺手
-- 放心使用：无广告、无统计，不读取账号文件，也不扫描日志
+- 放心使用：无广告、无统计，不读取账号文件，不上传会话内容
 
-应用只通过自己启动的本机 Codex app-server 获取数据，并明确禁用 `remote_control` 功能，避免与 ChatGPT 的远程连接竞争。它**不会读取或保存** `~/.codex/auth.json`。
+应用通过自己启动的本机 Codex app-server 获取额度数据，并明确禁用 `remote_control` 功能，避免与 ChatGPT 的远程连接竞争。它**不会读取或保存** `~/.codex/auth.json`。
 
 ## 设计理念：轻量是一种产品边界
 
@@ -34,7 +35,7 @@
 - **需要时出现，平时安静待着。** 桌面悬浮入口更醒目，但收起后仍会占用内容区，偶尔挡住代码、网页或点击。额度不是需要持续盯着的实时行情，所以入口放在位置稳定的菜单栏，不占桌面，也不显示 Dock 图标。
 - **只做好一件事。** 项目只关注 Codex，不把自己扩展成多 AI 服务控制台。更窄的范围换来更少的选项、更直接的界面，以及更清楚的维护边界。
 - **一眼够用，不堆仪表盘。** 5 小时额度、本周额度、准确刷新时间和每次额度重置的到期时间集中在一个小窗口里；点一下，看完，继续写。
-- **数据路径短而明确。** 额度从本机 Codex app-server 进入菜单栏，到这里就结束；不读取 `auth.json`，不扫描 Codex 日志，也不向额外服务上传额度数据。
+- **数据路径短而明确。** 额度从本机 Codex app-server 进入菜单栏，到这里就结束；不读取 `auth.json`，也不向额外服务上传额度数据。任务动画会额外读取运行中 Codex 进程持有的会话文件，仅解析任务生命周期字段。
 
 ## 和 CodexBar 怎么选
 
@@ -44,7 +45,7 @@ Codex Usage Meter 不是 [CodexBar](https://github.com/steipete/CodexBar) 的替
 | --- | --- | --- |
 | 产品定位 | 一个只看 Codex 额度的小窗口 | 多个 AI 编程服务的统一用量与状态工具 |
 | 关注信息 | 5 小时、本周、额度重置 | 多服务额度、重置、费用、状态等，具体能力随服务而异 |
-| 数据路径 | 独立启动本机 Codex app-server，并禁用远程控制 | 按服务使用 CLI、OAuth、API、浏览器会话或本地文件等来源 |
+| 数据路径 | 独立启动本机 Codex app-server 获取额度；本地会话事件用于任务动画 | 按服务使用 CLI、OAuth、API、浏览器会话或本地文件等来源 |
 | 更适合 | 只用或主要使用 Codex，希望少配置、点一下就看完 | 同时使用多种 AI 服务，希望集中管理和扩展能力 |
 
 如果你需要一套覆盖面广的 AI 用量中心，CodexBar 更合适；如果你只想让 Codex 额度安静地待在 Mac 菜单栏里，这个项目就是为这种取舍而做的。
@@ -53,11 +54,11 @@ Codex Usage Meter 不是 [CodexBar](https://github.com/steipete/CodexBar) 的替
 
 - macOS 14 或更高版本
 - Apple Silicon 或 Intel Mac
-- 已安装并登录 Codex CLI（已使用 `codex-cli 0.146.0` 验证）
+- 已安装并登录 Codex CLI（额度查询已使用 `codex-cli 0.154.0` 验证；任务事件已使用桌面端内置 `0.154.0-alpha.6.2` 验证）
 
 ## 安装与使用
 
-1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.1.6/Codex-Usage-Meter-v0.1.6-macOS.zip)。
+1. [下载 macOS ZIP](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip)。
 2. 解压后将 **Codex Usage Meter.app** 拖入“应用程序”。
 3. 从“应用程序”打开软件。
 
@@ -66,7 +67,7 @@ Codex Usage Meter 不是 [CodexBar](https://github.com/steipete/CodexBar) 的替
 可选：将 ZIP 和校验文件下载到同一目录后验证完整性：
 
 ```bash
-shasum -a 256 -c Codex-Usage-Meter-v0.1.6-macOS.zip.sha256
+shasum -a 256 -c Codex-Usage-Meter-v0.2.0-macOS.zip.sha256
 ```
 
 从源码构建：
@@ -79,6 +80,10 @@ swift run --disable-sandbox CodexMeterCoreTests
 ```
 
 应用会生成在 `outputs/Codex Usage Meter.app`。如果没有自动找到 Codex，可打开菜单栏面板，手动选择 `codex` 可执行文件。
+
+从 v0.2.0 起，任务动画读取运行中 Codex 进程持有的会话文件中的 `task_started`、`task_complete` 和 `turn_aborted` 事件，每秒检查一次。任务进行中时，细小颗粒从图标上缘脱落并向上消散；所有任务完成、中断或对应进程不再持有文件后停止。首次发现文件时建立当前状态，之后仅在文件变化时增量读取，不遍历历史会话目录。文件以只读方式打开，只接受当前用户拥有的普通文件，拒绝末级符号链接和特殊文件。会话字节会短暂经过内存，但不会保存到磁盘或上传；详见 [隐私说明](PRIVACY.md)。
+
+动画表示本机任务尚在进行（包含工具执行或等待），不等同于每一刻都在生成或计费 Token。会话格式不兼容、读取失败或只在其他设备运行的任务可能无法显示动画。可通过 `open -n "outputs/Codex Usage Meter.app" --args --demo --demo-activity` 预览效果。
 
 Codex Usage Meter 使用本机 Codex app-server 协议。新版 Codex CLI 可能需要同步适配，因此反馈问题时请附上 CLI 版本。
 
