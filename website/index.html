@@ -13,14 +13,18 @@
   <meta property="og:title" content="Codex Usage Meter — 在 Mac 菜单栏查看 Codex 额度">
   <meta property="og:description" content="一个只关心 Codex 额度的菜单栏小助手。原生 macOS，本机运行，MIT 开源。">
   <title>Codex Usage Meter — 在 Mac 菜单栏查看 Codex 额度</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/app-icon.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
   <script src="gallery.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Codex Usage Meter 首页"><span>Codex Usage Meter</span></a>
+    <a class="brand header-brand" href="#top" aria-label="Codex Usage Meter 首页">
+      <img src="assets/app-icon.png" width="40" height="40" alt="">
+      <span>Codex Usage Meter</span>
+    </a>
+    <p class="header-info"><span>macOS 原生</span><span>免费开源</span></p>
   </header>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
@@ -33,41 +37,60 @@
         </div>
         <p class="compatibility">v0.2.0 · macOS 14+ · Apple Silicon &amp; Intel</p>
       </div>
-      <div class="product-gallery" data-gallery role="region" aria-label="产品图片">
-        <div class="gallery-tabs" data-gallery-tabs hidden>
-          <button type="button" id="tab-desktop" aria-controls="slide-desktop" data-gallery-tab>完整桌面</button>
-          <button type="button" id="tab-menubar" aria-controls="slide-menubar" data-gallery-tab>收起状态</button>
-          <button type="button" id="tab-quota" aria-controls="slide-quota" data-gallery-tab>额度详情</button>
-          <button type="button" id="tab-placement" aria-controls="slide-placement" data-gallery-tab>入口对比</button>
-        </div>
-        <div class="gallery-panels">
-          <figure class="gallery-panel" id="slide-desktop" data-gallery-panel>
+      <div class="product-gallery" data-gallery role="region" aria-roledescription="图片轮播" aria-label="产品展示">
+        <div class="gallery-viewport" id="product-slides" data-gallery-viewport tabindex="0" aria-label="产品图片，可左右滑动或使用方向键">
+          <figure class="gallery-panel" id="slide-desktop" data-gallery-panel data-title="完整桌面" role="group" aria-roledescription="幻灯片" aria-label="完整桌面">
             <div class="gallery-media">
               <img src="assets/product.jpg" width="1536" height="1024" fetchpriority="high" decoding="async" alt="整台 Mac 的使用场景：点击顶部菜单栏后展开 Codex 额度面板">
             </div>
             <figcaption>看完收起，继续用当前的应用。</figcaption>
           </figure>
-          <figure class="gallery-panel" id="slide-menubar" data-gallery-panel>
+          <figure class="gallery-panel" id="slide-menubar" data-gallery-panel data-title="收起状态" role="group" aria-roledescription="幻灯片" aria-label="收起状态">
             <div class="gallery-media">
               <img src="assets/menubar.jpg" width="1774" height="887" decoding="async" alt="面板收起后的 Mac 桌面，剩余额度显示在顶部菜单栏，内容区没有悬浮按钮">
             </div>
             <figcaption>剩余额度留在菜单栏，桌面上没有悬浮按钮。</figcaption>
           </figure>
-          <figure class="gallery-panel" id="slide-quota" data-gallery-panel>
+          <figure class="gallery-panel" id="slide-quota" data-gallery-panel data-title="额度详情" role="group" aria-roledescription="幻灯片" aria-label="额度详情">
             <div class="gallery-media quota-media">
               <img src="assets/quota-panel.png" width="640" height="624" decoding="async" alt="v0.2.0 原生面板示例：5 小时和本周剩余额度、刷新时间、每次额度重置的到期时间">
             </div>
             <figcaption>5 小时、本周、额度重置：剩余多少，何时刷新。</figcaption>
           </figure>
-          <figure class="gallery-panel" id="slide-placement" data-gallery-panel>
-            <div class="gallery-media comparison-media">
-              <img src="assets/placement-comparison.jpg" width="1254" height="1254" decoding="async" alt="入口位置示意：左侧悬浮圆钮放在代码窗口上，右侧入口放在 macOS 菜单栏">
-              <div class="comparison-labels" aria-hidden="true"><span>悬浮圆钮</span><span>菜单栏入口</span></div>
+          <figure class="gallery-panel" id="slide-placement" data-gallery-panel data-title="与 CodexBar 对比" role="group" aria-roledescription="幻灯片" aria-label="与 CodexBar 对比">
+            <div class="gallery-media product-comparison">
+              <div class="compare-column compare-ours">
+                <div class="compare-brand"><img src="assets/app-icon.png" width="32" height="32" alt=""><h3>Codex Usage Meter</h3></div>
+                <p class="compare-scope">只专注 Codex</p>
+                <ul>
+                  <li>5 小时与本周额度</li>
+                  <li>刷新、重置到期时间</li>
+                  <li>本地任务状态动画</li>
+                </ul>
+                <p class="compare-fit">主要使用 Codex</p>
+              </div>
+              <div class="compare-column compare-other">
+                <div class="compare-brand"><h3>CodexBar</h3></div>
+                <p class="compare-scope">多种 AI 服务</p>
+                <ul>
+                  <li>Codex、Claude 等</li>
+                  <li>多服务额度与状态</li>
+                  <li>费用等扩展信息</li>
+                </ul>
+                <p class="compare-fit">同时使用多个 AI 工具</p>
+              </div>
             </div>
-            <figcaption>同样点一下，区别是入口平时放在哪里。位置示意。</figcaption>
+            <figcaption>两者都是菜单栏工具，区别在服务覆盖范围。<a href="https://github.com/steipete/CodexBar" target="_blank" rel="noopener noreferrer">CodexBar 项目说明</a></figcaption>
           </figure>
         </div>
-        <noscript><p class="gallery-fallback">产品图片依次展示。</p></noscript>
+        <div class="gallery-footer">
+          <div class="gallery-position"><span data-gallery-title aria-live="polite">完整桌面</span><div class="gallery-dots" aria-hidden="true"><i class="is-current"></i><i></i><i></i><i></i></div></div>
+          <span class="gallery-hint">左右滑动查看</span>
+          <div class="gallery-arrows" data-gallery-controls hidden>
+            <button type="button" data-gallery-prev aria-label="上一张" aria-controls="product-slides" disabled><span aria-hidden="true">←</span></button>
+            <button type="button" data-gallery-next aria-label="下一张" aria-controls="product-slides"><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
       </div>
     </section>
 
