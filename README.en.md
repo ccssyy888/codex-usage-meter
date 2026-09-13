@@ -1,12 +1,17 @@
-# Codex Usage Meter
+<h1 align="center">Codex Usage Meter</h1>
 
-[Website](https://ccssyy888.github.io/codex-usage-meter/)
+<p align="center">Codex quota and task activity, right in your Mac menu bar.</p>
 
-**A lightweight, native macOS menu bar app dedicated to Codex limits—there when you need it, quiet otherwise.**
+<h2 align="center"><a href="https://ccssyy888.github.io/codex-usage-meter/">Visit the website →</a></h2>
 
-[简体中文](README.md)
+<p align="center">
+  <a href="https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip">Download v0.2.0</a> ·
+  <a href="https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.2.0">Release notes</a> ·
+  <a href="https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip.sha256">Checksum</a> ·
+  <a href="README.md">简体中文</a>
+</p>
 
-**[Download v0.2.0 for macOS](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip)** · [Release notes](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.2.0) · [SHA-256](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip.sha256)
+<p align="center"><sub>macOS 14+ · Apple Silicon / Intel · Free and open source</sub></p>
 
 <p align="center">
   <img src="docs/images/activity-en-v0.2.0.gif" width="600" alt="Particles evaporating upward from the Codex Usage Meter badge while a local task is in progress">

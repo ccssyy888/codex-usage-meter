@@ -1,12 +1,17 @@
-# Codex Usage Meter
+<h1 align="center">Codex Usage Meter</h1>
 
-[官网](https://ccssyy888.github.io/codex-usage-meter/)
+<p align="center">在 Mac 菜单栏查看 Codex 额度与任务状态。</p>
 
-**一个轻量、原生、只专注 Codex 的 macOS 菜单栏额度小助手：需要时一眼看清，平时安静待着。**
+<h2 align="center"><a href="https://ccssyy888.github.io/codex-usage-meter/">访问官网与下载 →</a></h2>
 
-[English](README.en.md)
+<p align="center">
+  <a href="https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip">直接下载 v0.2.0</a> ·
+  <a href="https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.2.0">版本说明</a> ·
+  <a href="https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip.sha256">校验文件</a> ·
+  <a href="README.en.md">English</a>
+</p>
 
-**[下载 v0.2.0 macOS 版](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip)** · [版本说明](https://github.com/ccssyy888/codex-usage-meter/releases/tag/v0.2.0) · [SHA-256 校验文件](https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip.sha256)
+<p align="center"><sub>macOS 14+ · Apple Silicon / Intel · 免费开源</sub></p>
 
 <p align="center">
   <img src="docs/images/activity-zh-cn-v0.2.0.gif" width="600" alt="Codex Usage Meter 在本地任务运行时向上蒸发颗粒，任务结束后恢复静止">
