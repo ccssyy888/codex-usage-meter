@@ -15,6 +15,7 @@
   <title>Codex Usage Meter — 在 Mac 菜单栏查看 Codex 额度</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <script src="gallery.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -25,24 +26,68 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <h1 id="hero-title">在菜单栏里，<br>查看 Codex 额度。</h1>
-        <p class="intro">5 小时、本周用量和刷新时间，点开就知道。</p>
+        <p class="intro">不用切出当前窗口。5 小时、本周额度和刷新时间，点一下菜单栏就知道。</p>
         <div class="actions">
           <a class="button-primary" data-download href="https://github.com/ccssyy888/codex-usage-meter/releases/download/v0.2.0/Codex-Usage-Meter-v0.2.0-macOS.zip">下载 macOS 版</a>
           <a class="github-link" href="https://github.com/ccssyy888/codex-usage-meter" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
         <p class="compatibility">v0.2.0 · macOS 14+ · Apple Silicon &amp; Intel</p>
       </div>
-      <figure class="product-stage">
-        <img src="assets/product.jpg" width="1536" height="1024" fetchpriority="high" decoding="async" alt="Codex Usage Meter 在 Mac 菜单栏展开，展示 5 小时和本周剩余额度，以及每次额度重置的到期时间。画面中的数值为示例。">
-      </figure>
+      <div class="product-gallery" data-gallery role="region" aria-label="产品图片">
+        <div class="gallery-tabs" data-gallery-tabs hidden>
+          <button type="button" id="tab-desktop" aria-controls="slide-desktop" data-gallery-tab>完整桌面</button>
+          <button type="button" id="tab-menubar" aria-controls="slide-menubar" data-gallery-tab>收起状态</button>
+          <button type="button" id="tab-quota" aria-controls="slide-quota" data-gallery-tab>额度详情</button>
+          <button type="button" id="tab-placement" aria-controls="slide-placement" data-gallery-tab>入口对比</button>
+        </div>
+        <div class="gallery-panels">
+          <figure class="gallery-panel" id="slide-desktop" data-gallery-panel>
+            <div class="gallery-media">
+              <img src="assets/product.jpg" width="1536" height="1024" fetchpriority="high" decoding="async" alt="整台 Mac 的使用场景：点击顶部菜单栏后展开 Codex 额度面板">
+            </div>
+            <figcaption>看完收起，继续用当前的应用。</figcaption>
+          </figure>
+          <figure class="gallery-panel" id="slide-menubar" data-gallery-panel>
+            <div class="gallery-media">
+              <img src="assets/menubar.jpg" width="1774" height="887" decoding="async" alt="面板收起后的 Mac 桌面，剩余额度显示在顶部菜单栏，内容区没有悬浮按钮">
+            </div>
+            <figcaption>剩余额度留在菜单栏，桌面上没有悬浮按钮。</figcaption>
+          </figure>
+          <figure class="gallery-panel" id="slide-quota" data-gallery-panel>
+            <div class="gallery-media quota-media">
+              <img src="assets/quota-panel.png" width="640" height="624" decoding="async" alt="v0.2.0 原生面板示例：5 小时和本周剩余额度、刷新时间、每次额度重置的到期时间">
+            </div>
+            <figcaption>5 小时、本周、额度重置：剩余多少，何时刷新。</figcaption>
+          </figure>
+          <figure class="gallery-panel" id="slide-placement" data-gallery-panel>
+            <div class="gallery-media comparison-media">
+              <img src="assets/placement-comparison.jpg" width="1254" height="1254" decoding="async" alt="入口位置示意：左侧悬浮圆钮放在代码窗口上，右侧入口放在 macOS 菜单栏">
+              <div class="comparison-labels" aria-hidden="true"><span>悬浮圆钮</span><span>菜单栏入口</span></div>
+            </div>
+            <figcaption>同样点一下，区别是入口平时放在哪里。位置示意。</figcaption>
+          </figure>
+        </div>
+        <noscript><p class="gallery-fallback">产品图片依次展示。</p></noscript>
+      </div>
+    </section>
+
+    <section class="placement section" aria-labelledby="placement-title">
+      <div>
+        <h2 id="placement-title">为什么放在菜单栏</h2>
+        <p class="placement-subtitle">入口固定，不挡代码和网页。</p>
+      </div>
+      <div class="placement-copy">
+        <p>悬浮圆钮收起后，仍会占用工作区。放进菜单栏后，切换应用也不用给它重新找位置。</p>
+        <p>菜单栏拥挤时，它确实没那么显眼。但对于偶尔查看额度，这个位置更合适。</p>
+      </div>
     </section>
 
     <section class="features section" id="features" aria-labelledby="features-title">
-      <h2 id="features-title">功能与隐私</h2>
+      <h2 id="features-title">只专注 Codex</h2>
       <dl class="product-facts">
-        <div><dt>额度</dt><dd>菜单栏显示剩余额度，点开查看本周用量和重置时间。</dd></div>
-        <div><dt>更新</dt><dd>自动刷新，连接中断后会自行恢复。</dd></div>
-        <div><dt>隐私</dt><dd>额度在本机获取和显示，无广告、无统计。</dd></div>
+        <div><dt>查看</dt><dd>额度、刷新时间和重置到期时间集中在一个面板，支持中英文。</dd></div>
+        <div><dt>状态</dt><dd>自动刷新、断线重连。本地任务运行时有颗粒动画，结束后停止。</dd></div>
+        <div><dt>隐私</dt><dd>数据在本机处理，不读取 auth.json，无广告、无统计。<a href="https://github.com/ccssyy888/codex-usage-meter/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer">了解数据读取范围</a></dd></div>
       </dl>
     </section>
 
@@ -57,7 +102,7 @@
         <div class="answer">
           <p>先安装并登录 Codex CLI，再解压下载的 ZIP，将应用拖入「应用程序」并打开。</p>
           <p>安装包尚未经过 Apple 公证。若系统阻止打开，请在确认来源可信后，前往「系统设置 → 隐私与安全性」选择「仍要打开」。</p>
-          <p><a href="https://github.com/ccssyy888/codex-usage-meter#安装与使用" target="_blank" rel="noopener noreferrer">完整安装说明</a></p>
+          <p><a href="https://github.com/ccssyy888/codex-usage-meter#安装" target="_blank" rel="noopener noreferrer">完整安装说明</a></p>
         </div>
           </details>
         </div>
