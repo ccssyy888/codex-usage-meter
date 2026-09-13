@@ -14,7 +14,7 @@ GitHub Pages 使用 GitHub Actions 部署。向 main 推送 website/ 或 .github
 
 ## 安装包
 
-首屏唯一下载按钮直接指向本项目 GitHub Releases 的 v0.1.6 ZIP，网站不存储或代理安装包。版本说明与 SHA-256 校验文件指向相同版本。
+首屏唯一下载按钮直接指向本项目 GitHub Releases 的 v0.2.0 ZIP，网站不存储或代理安装包。版本说明与 SHA-256 校验文件指向相同版本。
 
 每次发布新版 App 后，同步更新 index.html 中的版本号、安装包、版本说明、校验文件地址，与仓库 README 的公开版本一致。网站自身改动不影响安装产品，无需发布新版 App。
 
